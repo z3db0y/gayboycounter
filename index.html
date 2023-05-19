@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
-    <script src="script1.js"></script>
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-    <div id="first"></div>
-    <h1 class = "centre">0</h1>
-    <button class = "stop"><b>Stop</b></button>
-    <button class="run"><b>Run</b></button>
-    <button class="reset"><b>Reset</b></button>
+    <div id="popupCont" style="display:none" onclick="this.style.display = 'none'">
+        <div id="popup" onclick="event.stopPropagation()">
+            <h1>Set Timer</h1>
+            <span><input placeholder="0" id="amount" type="number"> seconds</span>
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+    <h1 id="counter">0</h1>
+    <div class="btns">
+        <button id="set">Set</button>
+        <button id="run">Run</button>
+        <button id="stop">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
 </body>
-</html>
+<script src="script1.js"></script>

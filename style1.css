@@ -1,46 +1,106 @@
-.centre {
-    text-align: center;
-    font-size: 50vh;
-    position: relative;
-    bottom:  50px;
+body, html {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-.stop {
-    cursor: pointer;
-    position: relative;
-    left: 637px;
-    bottom: 321px;
-    width: 10vw;
-    height: 10vh;
-    border: 4px solid white;
-    background-color: red;
-    border-radius: 9px;
 
+* {
+    font-family: sans-serif;
 }
-.reset {
+
+#counter {
+    color: #fff;
+    font-size: 20vh;
+}
+
+.btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btns button {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 3vh;
+    margin: 20px;
+    color: #fff;
     cursor: pointer;
-    width: 10vw;
-    height: 10vh;
-    border: 4px solid white;
-    background-color: green;
-    position: relative;
-    bottom: 320px;
-    left: 497px;
-    border-radius: 9px;
+    transition: .2s;
 }
-.run {
+
+.btns button:hover {
+    background: #fff !important;
+    color: #000;
+}
+
+#reset {
+    background: #f00;
+}
+
+#run {
+    background: #0f0;
+}
+
+#stop {
+    background: #00f;
+}
+
+#set {
+    background: #f0f;
+}
+
+#popupCont {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #000A;
+}
+
+#popup {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#popup * {
+    margin: 10px;
+}
+
+#popup input {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    outline: none;
+}
+
+#submit {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    font-size: 2vh;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: .2s;
     cursor: pointer;
-    width: 10vw;
-    height: 10vh;
-    border: 4px solid white;
-    background-color: blue;
-    position: relative;
-    bottom: 320px;
-    left: 356px;
-    border-radius: 9px;
 }
-#first {
-    position: relative;
-}
-body {
-    overflow: hidden;
+
+#submit:hover {
+    background: #fff;
+    color: #000;
 }

@@ -1,96 +1,50 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let centre = document.querySelector(".centre");
-    let centre_int = Number.parseInt(centre.textContent);
+let set = document.getElementById('set');
+let run = document.getElementById('run');
+let pause = document.getElementById('stop');
+let reset = document.getElementById('reset');
 
-    document.body.style.background = "black";
-    document.body.style.color = "white";
+let counterElem = document.getElementById('counter');
+let popCont = document.getElementById('popupCont');
+let submit = document.getElementById('submit');
+let amountElem = document.getElementById('amount');
 
-    let interval = 1000;
-    let loop = 0;
+let counter = 0;
+let amount = 0;
+let interval;
 
-    let stop_num = prompt("Enter the number that you want this program to count to");
-    let stop_num_int = Number.parseInt(stop_num);
-    setTimeout(() => {
-        console.log("Running....")
+function onSubmitClick() {
+    amount = amountElem.value;
+    popCont.style.display = 'none';
+}
+
+function setCounter() {
+    popCont.style.display = '';
+}
+
+function startCounter() {
+    interval = setInterval(function () {
+        if(counter >= amount) {
+            clearInterval(interval);
+            interval = null;
+            return;
+        }
+        counter++;
+        counterElem.innerHTML = counter;
     }, 1000);
+}
 
-    let stop = document.querySelector(".stop");
-    stop.addEventListener("click", function() {
-        reset.style.boxShadow = "";
-        stop.style.boxShadow = "inset 0 0 0 4px black";
-        run.style.boxShadow = "";
+function pauseCounter() {
+    clearInterval(interval);
+}
 
-        console.log("Stopped......")
+function resetCounter() {
+    clearInterval(interval);
+    counter = 0;
+    counterElem.innerHTML = counter;
+}
 
-        clearInterval(Timer);
-        clearInterval(Timering);
-    });
-
-
-    let run = document.querySelector(".run");
-    run.addEventListener("click", function(running) {
-        reset.style.boxShadow = "";
-        stop.style.boxShadow = "";
-        run.style.boxShadow = "inset 0 0 0 4px black";
-        clearInterval(Timer);
-        clearInterval(Timering);
-        console.log("Running....")
-        loop = 0;
-        centre_int = Number.parseInt(centre.textContent);
-        Timering = setInterval(() => {
-            if (stop_num_int === 0) {
-                clearInterval(Timer);
-                clearInterval(Timering);
-                centre_int = centre_int - 1;
-                centre.innerHTML = centre_int;
-            }
-            if (isNaN(stop_num_int)) {
-                clearInterval(Timer);
-                clearInterval(Timering);
-                centre_int = centre_int - 1;
-                centre.innerHTML = centre_int;
-            }
-            if (run) {
-            }
-            loop++;
-            centre_int++;
-            centre.innerHTML = centre_int;
-            if (loop === stop_num_int) {
-                clearInterval(Timering);
-            }
-        }, interval);
-    });
-
-    let Timer = setInterval(() => {
-        run.style.boxShadow = "inset 0 0 0 4px black"
-        if (stop_num_int === 0) {
-            clearInterval(Timer);
-            centre_int = centre_int - 1;
-            centre.innerHTML = centre_int;
-        }
-        loop++;
-        centre.innerHTML = centre_int; // update the element value first
-        centre_int = centre_int + 1; // then increment the value
-        if (loop === stop_num_int + 1) {
-            clearInterval(Timer);
-        }
-    }, interval);
-
-    let Timering;
-    
-    let reset = document.querySelector(".reset");
-    reset.addEventListener("click", function() {
-        clearInterval(Timer);
-        clearInterval(Timering);
-
-        console.log("Resetted......")
-
-        centre_int = 0
-        centre.innerHTML = 0
-        loop = 0 
-
-        reset.style.boxShadow = "inset 0 0 0 4px black";
-        stop.style.boxShadow = "";
-        run.style.boxShadow = "";
-    })
-})
+set.addEventListener('click', setCounter);
+run.addEventListener('click', startCounter);
+pause.addEventListener('click', pauseCounter);
+reset.addEventListener('click', resetCounter);
+submit.addEventListener('click', onSubmitClick);
